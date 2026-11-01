@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5A623">
+<title>استبيان تطوير الجانب العملي</title>
+<!-- إضافة خط Cairo من جوجل -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #F5A623;
+  --primary-dark: #D98C15;
+  --primary-light: #FFF8EB;
+  --secondary: #0F172A;
+  --secondary-light: #1E293B;
+  --black: #1a1a1a;
+  --gray: #64748B;
+  --bg-color: #F1F5F9;
+  --surface: #FFFFFF;
+  --border: #E2E8F0;
+  --danger: #EF4444;
+  --success: #10B981;
+}
+
+* { 
+  box-sizing: border-box; 
+  font-family: 'Cairo', sans-serif; 
+  -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 15px;
+  background: var(--bg-color);
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(38,100%,70%,0.2) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(215,64%,50%,0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondary);
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  background: var(--surface);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== الهيدر ===== */
+.header {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+  color: white;
+  padding: 40px 25px 50px;
+  text-align: center;
+  position: relative;
+}
+
+/* تصميم الموجة في أسفل الهيدر */
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.42,122.9,190.5,108.68,236.43,97.77,279.79,74.52,321.39,56.44Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary) 0%, #FFD000 100%);
+  color: var(--secondary);
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 12px 30px rgba(245, 166, 35, 0.4);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.header h1 {
+  font-size: 26px;
+  margin: 0 0 12px;
+  line-height: 1.5;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  color: #94A3B8;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ===== المحتوى ===== */
+.content { 
+  padding: 10px 32px 35px; 
+}
+
+.intro {
+  background: var(--primary-light);
+  border-right: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--secondary-light);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.05);
+  animation: slideIn 0.5s ease 0.3s both;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.field {
+  margin-bottom: 26px;
+  animation: fadeInUp 0.5s ease both;
+}
+.field:nth-child(2) { animation-delay: 0.4s; }
+.field:nth-child(3) { animation-delay: 0.5s; }
+.field:nth-child(4) { animation-delay: 0.6s; }
+.field:nth-child(5) { animation-delay: 0.7s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: var(--secondary);
+}
+
+.required { color: var(--danger); font-weight: bold; }
+
+select, textarea {
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: #F8FAFC;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--secondary);
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 18px center;
+  padding-left: 45px;
+}
+
+select:focus, textarea:focus {
+  border-color: var(--primary);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
+}
+
+select:hover, textarea:hover {
+  border-color: #CBD5E1;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+textarea::placeholder { color: #94A3B8; font-weight: 400; }
+
+/* ===== التقييم بالنجوم ===== */
+.rating-box {
+  border: 2px solid var(--border);
+  background: #F8FAFC;
+  padding: 22px 15px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.rating-box:hover {
+  border-color: #CBD5E1;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  direction: ltr;
+  gap: 12px;
+}
+
+.star {
+  font-size: 42px;
+  color: #CBD5E1;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.star.active {
+  color: var(--primary);
+  filter: drop-shadow(0 4px 8px rgba(245, 166, 35, 0.5));
+  transform: scale(1.15);
+}
+
+.star:hover {
+  transform: scale(1.25) rotate(-8deg);
+  color: var(--primary-dark);
+}
+
+.star:active { transform: scale(1); }
+
+.star:focus-visible {
+  outline: 2px dashed var(--primary);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.rating-label {
+  color: var(--gray);
+  font-size: 14px;
+  margin-top: 15px;
+  min-height: 22px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.rating-label.active {
+  color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ===== عداد الأحرف ===== */
+.counter {
+  text-align: left;
+  color: var(--gray);
+  font-size: 12px;
+  margin-top: 8px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.counter.warn { color: #F59E0B; }
+.counter.danger { color: var(--danger); }
+
+/* ===== رسائل الخطأ ===== */
+.error-text {
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+  display: none;
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(3px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+  40%, 60% { transform: translate3d(5px, 0, 0); }
+}
+
+.field.invalid .error-text { display: block; }
+.field.invalid select,
+.field.invalid textarea,
+.field.invalid .rating-box {
+  border-color: var(--danger);
+  background: #FEF2F2;
+}
+
+/* ===== زر الإرسال ===== */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--primary) 0%, #FFD000 100%);
+  color: var(--secondary);
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+  animation: fadeInUp 0.5s ease 0.8s both;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(245, 166, 35, 0.45);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.3);
+}
+
+.submit-btn:disabled {
+  background: #E2E8F0;
+  color: #94A3B8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(15, 23, 42, 0.15);
+  border-top-color: var(--secondary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.submit-btn.loading .spinner { display: inline-block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== الرسائل ===== */
+.message {
+  display: none;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 700;
+  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.message.success {
+  display: block;
+  background: #ECFDF5;
+  color: var(--success);
+  border: 2px solid #A7F3D0;
+}
+
+.message.error {
+  display: block;
+  background: #FEF2F2;
+  color: var(--danger);
+  border: 2px solid #FECACA;
+}
+
+/* ===== الفوتر ===== */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 20px;
+  text-align: center;
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.8;
+  background: #F8FAFC;
+  font-weight: 500;
+}
+
+.footer strong { 
+  color: var(--secondary); 
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* ===== الموبايل ===== */
+@media(max-width: 600px) {
+  body { padding: 15px 10px; }
+  .container { border-radius: 20px; }
+  .header { padding: 35px 20px 40px; }
+  .header h1 { font-size: 22px; }
+  .logo { width: 70px; height: 70px; font-size: 32px; }
+  .content { padding: 10px 20px 25px; }
+  .star { font-size: 36px; gap: 8px;}
+  .submit-btn { padding: 16px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="logo">📋</div>
+    <h1>استبيان تطوير الجانب العملي</h1>
+    <p>مشاركتكم تصنع فرقاً في تطوير العملية التعليمية وتحسين الجانب العملي للمواد الدراسية.</p>
+  </header>
+
+  <main class="content">
+
+    <div class="intro">
+      عزيزي الطالب، نرحب بمقترحاتك وآرائك حول تطوير الجانب العملي.
+      نهدف إلى الاستماع إليك والعمل على تحسين التجربة التعليمية.
+      جميع المشاركات مجهولة الهوية.
+    </div>
+
+    <form id="surveyForm" novalidate>
+
+      <!-- المرحلة الدراسية -->
+      <div class="field" id="field-stage">
+        <label for="stage">
+          المرحلة الدراسية <span class="required">*</span>
+        </label>
+        <select id="stage" required>
+          <option value="">يرجى اختيار المرحلة</option>
+          <option value="المرحلة الثانية">المرحلة الثانية</option>
+          <option value="المرحلة الثالثة">المرحلة الثالثة</option>
+        </select>
+        <div class="error-text">يرجى اختيار المرحلة الدراسية.</div>
+      </div>
+
+      <!-- المادة الدراسية -->
+      <div class="field" id="field-subject">
+        <label for="subject">
+          المادة الدراسية <span class="required">*</span>
+        </label>
+        <select id="subject" required>
+          <option value="">يرجى اختيار المادة</option>
+          <option value="المخاطر الإشعاعية">المخاطر الإشعاعية</option>
+          <option value="أجهزة الأشعة">أجهزة الأشعة</option>
+          <option value="فيزياء الأشعة">فيزياء الأشعة</option>
+        </select>
+        <div class="error-text">يرجى اختيار المادة الدراسية.</div>
+      </div>
+
+      <!-- التقييم -->
+      <div class="field" id="field-rating">
+        <label>
+          كيف تقيّم الجانب العملي للمادة؟
+          <span class="required">*</span>
+        </label>
+        <div class="rating-box">
+          <div class="stars" id="stars" role="radiogroup" aria-label="تقييم الجانب العملي">
+            <button type="button" class="star" data-value="1" aria-label="نجمة 1">★</button>
+            <button type="button" class="star" data-value="2" aria-label="نجمة 2">★</button>
+            <button type="button" class="star" data-value="3" aria-label="نجمة 3">★</button>
+            <button type="button" class="star" data-value="4" aria-label="نجمة 4">★</button>
+            <button type="button" class="star" data-value="5" aria-label="نجمة 5">★</button>
+          </div>
+          <div class="rating-label" id="ratingLabel">اختر تقييماً من نجمة إلى خمس نجوم</div>
+        </div>
+        <div class="error-text">يرجى تقييم الجانب العملي.</div>
+      </div>
+
+      <!-- المقترح -->
+      <div class="field" id="field-suggestion">
+        <label for="suggestion">
+          مقترحك لتطوير الجانب العملي
+          <span class="required">*</span>
+        </label>
+        <textarea
+          id="suggestion"
+          maxlength="2000"
+          required
+          placeholder="اكتب فكرتك أو مقترحك هنا...
+
+مثلاً:
+- زيادة التجارب العملية.
+- توفير أجهزة وأدوات تعليمية.
+- تطوير أسلوب شرح التجارب.
+- إضافة تطبيقات عملية جديدة."
+        ></textarea>
+        <div class="counter" id="counter">
+          <span id="charCount">0</span> / 2000 حرف
+        </div>
+        <div class="error-text">يرجى كتابة مقترح واضح (5 أحرف على الأقل).</div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span class="spinner"></span>
+        <span id="submitText">إرسال المقترح ←</span>
+      </button>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+
+    </form>
+
+  </main>
+
+  <footer class="footer">
+    <strong>معاً نحو تعليم عملي أفضل</strong>
+    <br>
+    جميع المشاركات مجهولة الهوية وتستخدم لأغراض التطوير.
+  </footer>
+
+</div>
+
+<script>
+// ==================================
+// رابط Google Apps Script
+// ==================================
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnMGhA-yyi3vSjanzYt3K-Pf-EQ7LKlDsflrnYeBWoR29DteyyqKA8ggXDlLPlfhiMAg/exec";
+
+// ==================================
+// عناصر الصفحة
+// ==================================
+const form        = document.getElementById("surveyForm");
+const stars       = document.querySelectorAll(".star");
+const ratingLabel = document.getElementById("ratingLabel");
+const suggestion  = document.getElementById("suggestion");
+const charCount   = document.getElementById("charCount");
+const counter     = document.getElementById("counter");
+const submitBtn   = document.getElementById("submitBtn");
+const submitText  = document.getElementById("submitText");
+const messageBox  = document.getElementById("message");
+const stageEl     = document.getElementById("stage");
+const subjectEl   = document.getElementById("subject");
+
+let selectedRating = 0;
+let sending = false;
+
+const ratingNames = ["ضعيف جداً", "ضعيف", "متوسط", "جيد", "ممتاز"];
+
+// ==================================
+// التقييم بالنجوم
+// ==================================
+stars.forEach(star => {
+  star.addEventListener("click", () => {
+    selectedRating = Number(star.dataset.value);
+    stars.forEach(item => {
+      const value = Number(item.dataset.value);
+      item.classList.toggle("active", value <= selectedRating);
+    });
+    ratingLabel.textContent = ratingNames[selectedRating - 1];
+    ratingLabel.classList.add("active");
+    document.getElementById("field-rating").classList.remove("invalid");
+  });
+});
+
+// ==================================
+// عداد الأحرف
+// ==================================
+suggestion.addEventListener("input", () => {
+  const len = suggestion.value.length;
+  charCount.textContent = len;
+
+  counter.classList.remove("warn", "danger");
+  if (len > 1800) counter.classList.add("danger");
+  else if (len > 1500) counter.classList.add("warn");
+
+  if (suggestion.value.trim().length >= 5) {
+    document.getElementById("field-suggestion").classList.remove("invalid");
+  }
+});
+
+// ==================================
+// التحقق الفوري
+// ==================================
+stageEl.addEventListener("change", () => {
+  if (stageEl.value) document.getElementById("field-stage").classList.remove("invalid");
+});
+
+subjectEl.addEventListener("change", () => {
+  if (subjectEl.value) document.getElementById("field-subject").classList.remove("invalid");
+});
+
+// ==================================
+// عرض الرسائل
+// ==================================
+function showMessage(text, type) {
+  messageBox.textContent = text;
+  messageBox.className = "message " + type;
+  messageBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// ==================================
+// إعادة تعيين النموذج
+// ==================================
+function resetSurvey() {
+  form.reset();
+  selectedRating = 0;
+  stars.forEach(s => s.classList.remove("active"));
+  ratingLabel.textContent = "اختر تقييماً من نجمة إلى خمس نجوم";
+  ratingLabel.classList.remove("active");
+  charCount.textContent = "0";
+  counter.classList.remove("warn", "danger");
+  document.querySelectorAll(".field").forEach(f => f.classList.remove("invalid"));
+}
+
+// ==================================
+// إرسال عبر النموذج (يتجنب CORS)
+// ==================================
+function submitViaForm(data) {
+  const iframe = document.createElement("iframe");
+  iframe.name = "hidden_iframe_" + Date.now();
+  iframe.style.display = "none";
+  document.body.appendChild(iframe);
+
+  const hiddenForm = document.createElement("form");
+  hiddenForm.method = "POST";
+  hiddenForm.action = SCRIPT_URL;
+  hiddenForm.target = iframe.name;
+  hiddenForm.style.display = "none";
+
+  const input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "payload";
+  input.value = JSON.stringify(data);
+  hiddenForm.appendChild(input);
+
+  document.body.appendChild(hiddenForm);
+  hiddenForm.submit();
+
+  // تنظيف بعد فترة
+  setTimeout(() => {
+    document.body.removeChild(hiddenForm);
+    document.body.removeChild(iframe);
+  }, 3000);
+}
+
+// ==================================
+// معالج الإرسال
+// ==================================
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  if (sending) return;
+
+  const stage          = stageEl.value;
+  const subject        = subjectEl.value;
+  const suggestionText = suggestion.value.trim();
+
+  document.querySelectorAll(".field").forEach(f => f.classList.remove("invalid"));
+
+  let hasError = false;
+
+  if (!stage) {
+    document.getElementById("field-stage").classList.add("invalid");
+    hasError = true;
+  }
+  if (!subject) {
+    document.getElementById("field-subject").classList.add("invalid");
+    hasError = true;
+  }
+  if (selectedRating < 1 || selectedRating > 5) {
+    document.getElementById("field-rating").classList.add("invalid");
+    hasError = true;
+  }
+  if (suggestionText.length < 5) {
+    document.getElementById("field-suggestion").classList.add("invalid");
+    hasError = true;
+  }
+
+  if (hasError) {
+    showMessage("يرجى تعبئة جميع الحقول المطلوبة.", "error");
+    return;
+  }
+
+  const data = {
+    stage: stage,
+    subject: subject,
+    rating: selectedRating,
+    suggestion: suggestionText
+  };
+
+  sending = true;
+  submitBtn.disabled = true;
+  submitBtn.classList.add("loading");
+  submitText.textContent = "جارٍ إرسال المقترح...";
+  messageBox.className = "message";
+
+  // إرسال عبر النموذج
+  submitViaForm(data);
+
+  // عرض رسالة نجاح بعد فترة قصيرة
+  setTimeout(() => {
+    showMessage("✅ تم إرسال مقترحك بنجاح، شكراً لمساهمتك ❤️", "success");
+    resetSurvey();
+
+    sending = false;
+    submitBtn.disabled = false;
+    submitBtn.classList.remove("loading");
+    submitText.textContent = "إرسال المقترح ←";
+  }, 1200);
+});
+</script>
+
+</body>
+</html>
