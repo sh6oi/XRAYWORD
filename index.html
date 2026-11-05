@@ -3,428 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#F5A623">
-<title>استبيان تطوير الجانب العملي</title>
-<!-- إضافة خط Cairo من جوجل -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5c400">
+<title>استبيان التقديم على وظيفة - عيادة أشعة</title>
 <style>
 :root {
-  --primary: #F5A623;
-  --primary-dark: #D98C15;
-  --primary-light: #FFF8EB;
-  --secondary: #0F172A;
-  --secondary-light: #1E293B;
+  --yellow: #f5c400;
+  --yellow-dark: #e8b900;
+  --yellow-light: #fff8d9;
   --black: #1a1a1a;
-  --gray: #64748B;
-  --bg-color: #F1F5F9;
-  --surface: #FFFFFF;
-  --border: #E2E8F0;
-  --danger: #EF4444;
-  --success: #10B981;
+  --gray: #777;
+  --background: #f5f6f8;
+  --border: #e9e9e9;
+  --danger: #b42318;
+  --success: #23753b;
 }
 
-* { 
-  box-sizing: border-box; 
-  font-family: 'Cairo', sans-serif; 
-  -webkit-tap-highlight-color: transparent; 
-}
+* { box-sizing: border-box; font-family: Tahoma, Arial, sans-serif; -webkit-tap-highlight-color: transparent; }
 
 body {
   margin: 0;
   min-height: 100vh;
-  padding: 40px 15px;
-  background: var(--bg-color);
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(38,100%,70%,0.2) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(215,64%,50%,0.1) 0px, transparent 50%);
-  background-attachment: fixed;
+  padding: 35px 15px;
+  background:
+    radial-gradient(circle at 10% 10%, #fff4c4 0, transparent 30%),
+    radial-gradient(circle at 90% 90%, #fff4c4 0, transparent 35%),
+    var(--background);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--secondary);
+  color: var(--black);
 }
 
 .container {
   width: 100%;
-  max-width: 600px;
-  background: var(--surface);
-  border-radius: 24px;
+  max-width: 570px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  box-shadow: 0 15px 55px rgba(0,0,0,.07);
+  animation: fadeUp .6s ease;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== الهيدر ===== */
 .header {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
   color: white;
-  padding: 40px 25px 50px;
+  padding: 32px 25px 30px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
-/* تصميم الموجة في أسفل الهيدر */
+.header::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,196,0,.18) 0%, transparent 70%);
+  top: -120px;
+  left: -50px;
+}
+
 .header::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30px;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.42,122.9,190.5,108.68,236.43,97.77,279.79,74.52,321.39,56.44Z' fill='%23FFFFFF'/%3E%3C/svg%3E");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,196,0,.10) 0%, transparent 70%);
+  bottom: -100px;
+  right: -30px;
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--primary) 0%, #FFD000 100%);
-  color: var(--secondary);
-  border-radius: 24px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #f5c400 0%, #ffdb4d 100%);
+  color: var(--black);
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 38px;
-  margin: 0 auto 20px;
+  font-size: 32px;
+  margin: 0 auto 18px;
   position: relative;
   z-index: 1;
-  box-shadow: 0 12px 30px rgba(245, 166, 35, 0.4);
-  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 8px 24px rgba(245,196,0,.3);
+  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(3deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 .header h1 {
-  font-size: 26px;
+  font-size: 23px;
   margin: 0 0 12px;
-  line-height: 1.5;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
 }
 
 .header p {
-  color: #94A3B8;
-  font-size: 14px;
-  line-height: 1.8;
+  color: #d0d0d0;
+  font-size: 13px;
+  line-height: 1.9;
   margin: 0;
-  font-weight: 500;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== المحتوى ===== */
-.content { 
-  padding: 10px 32px 35px; 
-}
+.content { padding: 28px 27px 32px; }
 
 .intro {
-  background: var(--primary-light);
-  border-right: 4px solid var(--primary);
-  border-radius: 12px;
-  padding: 16px 20px;
-  font-size: 14px;
-  color: var(--secondary-light);
-  line-height: 1.8;
-  margin-bottom: 30px;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.05);
-  animation: slideIn 0.5s ease 0.3s both;
+  background: linear-gradient(135deg, #fff8d9 0%, #fffdf5 100%);
+  border-right: 4px solid var(--yellow);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #555;
+  line-height: 2;
+  margin-bottom: 26px;
 }
 
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(20px); }
-  to { opacity: 1; transform: translateX(0); }
+/* ===== فواصل الأقسام ===== */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--black);
+  margin: 28px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--yellow-light);
+}
+
+.section-title:first-of-type { margin-top: 0; }
+
+.section-title .num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #f5c400 0%, #ffdb4d 100%);
+  color: var(--black);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(245,196,0,.3);
 }
 
 .field {
-  margin-bottom: 26px;
-  animation: fadeInUp 0.5s ease both;
-}
-.field:nth-child(2) { animation-delay: 0.4s; }
-.field:nth-child(3) { animation-delay: 0.5s; }
-.field:nth-child(4) { animation-delay: 0.6s; }
-.field:nth-child(5) { animation-delay: 0.7s; }
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  margin-bottom: 24px;
+  transition: .2s;
 }
 
 label {
   display: block;
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: var(--secondary);
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 11px;
+  color: #333;
 }
 
-.required { color: var(--danger); font-weight: bold; }
+.required { color: #df3939; }
+.optional { color: #999; font-weight: normal; font-size: 12px; }
 
-select, textarea {
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="file"],
+select,
+textarea {
   width: 100%;
-  border: 2px solid var(--border);
-  border-radius: 14px;
-  padding: 16px 18px;
-  background: #F8FAFC;
-  font-size: 15px;
-  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 15px 16px;
+  background: #fafafa;
+  font-size: 14px;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--secondary);
+  transition: .25s;
+  color: #333;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--yellow);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(245,196,0,.15);
 }
 
 select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23777' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: left 18px center;
-  padding-left: 45px;
-}
-
-select:focus, textarea:focus {
-  border-color: var(--primary);
-  background-color: var(--surface);
-  box-shadow: 0 0 0 4px rgba(245, 166, 35, 0.15);
-}
-
-select:hover, textarea:hover {
-  border-color: #CBD5E1;
+  background-position: left 16px center;
+  padding-left: 40px;
 }
 
 textarea {
-  min-height: 150px;
+  min-height: 120px;
   resize: vertical;
-  line-height: 1.8;
+  line-height: 2;
 }
 
-textarea::placeholder { color: #94A3B8; font-weight: 400; }
+textarea::placeholder { color: #aaa; line-height: 1.9; }
+
+/* ===== حقل رفع الملفات ===== */
+.file-box {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #fafafa;
+  cursor: pointer;
+  transition: .25s;
+  position: relative;
+}
+
+.file-box:hover {
+  border-color: var(--yellow);
+  background: var(--yellow-light);
+}
+
+.file-box input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-box .file-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.file-box .file-text {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.file-box .file-name {
+  font-size: 12px;
+  color: var(--success);
+  margin-top: 8px;
+  font-weight: bold;
+  word-break: break-all;
+  display: none;
+}
+
+.file-box.has-file {
+  border-color: var(--success);
+  background: #eaf8ed;
+}
+
+.file-box.has-file .file-name { display: block; }
+.file-box.has-file .file-text { color: var(--success); }
+
+.file-box .remove-file {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 26px;
+  height: 26px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 2;
+}
+
+.file-box.has-file .remove-file { display: flex; align-items: center; justify-content: center; }
 
 /* ===== التقييم بالنجوم ===== */
 .rating-box {
-  border: 2px solid var(--border);
-  background: #F8FAFC;
-  padding: 22px 15px;
-  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  padding: 20px 12px;
+  border-radius: 14px;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.rating-box:hover {
-  border-color: #CBD5E1;
+  transition: .2s;
 }
 
 .stars {
   display: flex;
   justify-content: center;
   direction: ltr;
-  gap: 12px;
+  gap: 8px;
 }
 
 .star {
-  font-size: 42px;
-  color: #CBD5E1;
+  font-size: 40px;
+  color: #d8d8d8;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all .2s;
   user-select: none;
   background: none;
   border: none;
   padding: 0;
   line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.05));
 }
 
 .star.active {
-  color: var(--primary);
-  filter: drop-shadow(0 4px 8px rgba(245, 166, 35, 0.5));
-  transform: scale(1.15);
+  color: var(--yellow);
+  filter: drop-shadow(0 3px 6px rgba(245,196,0,.4));
 }
 
-.star:hover {
-  transform: scale(1.25) rotate(-8deg);
-  color: var(--primary-dark);
-}
-
-.star:active { transform: scale(1); }
-
+.star:hover { transform: scale(1.2) rotate(-5deg); }
+.star:active { transform: scale(1.1); }
 .star:focus-visible {
-  outline: 2px dashed var(--primary);
+  outline: 2px solid var(--yellow);
   outline-offset: 4px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .rating-label {
-  color: var(--gray);
-  font-size: 14px;
-  margin-top: 15px;
-  min-height: 22px;
-  font-weight: 600;
-  transition: 0.3s;
+  color: #777;
+  font-size: 13px;
+  margin-top: 12px;
+  min-height: 20px;
+  font-weight: 500;
+  transition: .3s;
 }
 
 .rating-label.active {
-  color: var(--primary-dark);
-  transform: translateY(-2px);
+  color: var(--yellow-dark);
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 /* ===== عداد الأحرف ===== */
 .counter {
   text-align: left;
-  color: var(--gray);
-  font-size: 12px;
+  color: #999;
+  font-size: 11px;
   margin-top: 8px;
-  transition: 0.3s;
-  font-weight: 600;
+  transition: .2s;
 }
 
-.counter.warn { color: #F59E0B; }
-.counter.danger { color: var(--danger); }
+.counter.warn { color: #d97706; }
+.counter.danger { color: var(--danger); font-weight: bold; }
 
 /* ===== رسائل الخطأ ===== */
 .error-text {
   color: var(--danger);
-  font-size: 13px;
-  font-weight: 600;
-  margin-top: 8px;
+  font-size: 12px;
+  margin-top: 7px;
   display: none;
-  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: shake .3s;
 }
 
 @keyframes shake {
-  10%, 90% { transform: translate3d(-2px, 0, 0); }
-  20%, 80% { transform: translate3d(3px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
-  40%, 60% { transform: translate3d(5px, 0, 0); }
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
 }
 
 .field.invalid .error-text { display: block; }
+.field.invalid input,
 .field.invalid select,
-.field.invalid textarea,
-.field.invalid .rating-box {
+.field.invalid textarea {
   border-color: var(--danger);
-  background: #FEF2F2;
+  background: #fff5f5;
+}
+.field.invalid .rating-box,
+.field.invalid .file-box {
+  border-color: var(--danger);
+  background: #fff5f5;
 }
 
 /* ===== زر الإرسال ===== */
 .submit-btn {
   width: 100%;
   padding: 18px;
-  background: linear-gradient(135deg, var(--primary) 0%, #FFD000 100%);
-  color: var(--secondary);
+  background: linear-gradient(135deg, #f5c400 0%, #ffdb4d 100%);
+  color: var(--black);
   border: none;
-  border-radius: 14px;
-  font-size: 18px;
-  font-weight: 800;
+  border-radius: 13px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 15px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-top: 8px;
+  transition: all .25s;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
-  animation: fadeInUp 0.5s ease 0.8s both;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(245,196,0,.25);
+  font-family: inherit;
 }
 
 .submit-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(245, 166, 35, 0.45);
+  background: linear-gradient(135deg, #e8b900 0%, #f5c400 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(245,196,0,.35);
 }
 
-.submit-btn:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(245, 166, 35, 0.3);
-}
-
-.submit-btn:disabled {
-  background: #E2E8F0;
-  color: #94A3B8;
-  box-shadow: none;
-  cursor: not-allowed;
-}
+.submit-btn:active:not(:disabled) { transform: translateY(0); }
+.submit-btn:disabled { opacity: .7; cursor: not-allowed; transform: none; }
 
 .spinner {
   display: none;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(15, 23, 42, 0.15);
-  border-top-color: var(--secondary);
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(0,0,0,.2);
+  border-top-color: #000;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin .7s linear infinite;
 }
 
 .submit-btn.loading .spinner { display: inline-block; }
-
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ===== الرسائل ===== */
 .message {
   display: none;
-  padding: 18px;
-  border-radius: 14px;
-  font-size: 14px;
-  line-height: 1.8;
-  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 2;
+  margin-top: 18px;
   text-align: center;
-  font-weight: 700;
-  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 500;
+  animation: slideDown .4s ease;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-15px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .message.success {
   display: block;
-  background: #ECFDF5;
+  background: linear-gradient(135deg, #eaf8ed 0%, #f2fbf4 100%);
   color: var(--success);
-  border: 2px solid #A7F3D0;
+  border: 1px solid #c8e9d0;
 }
 
 .message.error {
   display: block;
-  background: #FEF2F2;
+  background: linear-gradient(135deg, #fff0f0 0%, #fff7f7 100%);
   color: var(--danger);
-  border: 2px solid #FECACA;
+  border: 1px solid #fcd0d0;
 }
 
 /* ===== الفوتر ===== */
 .footer {
-  border-top: 1px solid var(--border);
-  padding: 25px 20px;
+  border-top: 1px solid #eee;
+  padding: 20px;
   text-align: center;
-  color: var(--gray);
-  font-size: 13px;
-  line-height: 1.8;
-  background: #F8FAFC;
-  font-weight: 500;
+  color: #999;
+  font-size: 11px;
+  line-height: 2;
+  background: #fafafa;
 }
 
-.footer strong { 
-  color: var(--secondary); 
-  font-weight: 800;
-  font-size: 14px;
-}
+.footer strong { color: #555; }
 
 /* ===== الموبايل ===== */
-@media(max-width: 600px) {
-  body { padding: 15px 10px; }
-  .container { border-radius: 20px; }
-  .header { padding: 35px 20px 40px; }
-  .header h1 { font-size: 22px; }
-  .logo { width: 70px; height: 70px; font-size: 32px; }
-  .content { padding: 10px 20px 25px; }
-  .star { font-size: 36px; gap: 8px;}
-  .submit-btn { padding: 16px; font-size: 16px; }
+@media(max-width:480px) {
+  body { padding: 12px; align-items: flex-start; }
+  .container { margin-top: 10px; border-radius: 18px; }
+  .header { padding: 26px 18px; }
+  .header h1 { font-size: 20px; }
+  .content { padding: 22px 18px 26px; }
+  .star { font-size: 34px; }
+  .logo { width: 62px; height: 62px; font-size: 28px; }
 }
 </style>
 </head>
@@ -433,94 +497,142 @@ textarea::placeholder { color: #94A3B8; font-weight: 400; }
 <div class="container">
 
   <header class="header">
-    <div class="logo">📋</div>
-    <h1>استبيان تطوير الجانب العملي</h1>
-    <p>مشاركتكم تصنع فرقاً في تطوير العملية التعليمية وتحسين الجانب العملي للمواد الدراسية.</p>
+    <div class="logo">🩻</div>
+    <h1>استبيان التقديم على وظيفة</h1>
+    <p>عيادة أشعة — نرحب بتقديمك للانضمام إلى فريقنا. يرجى تعبئة الحقول التالية بدقة.</p>
   </header>
 
   <main class="content">
 
     <div class="intro">
-      عزيزي الطالب، نرحب بمقترحاتك وآرائك حول تطوير الجانب العملي.
-      نهدف إلى الاستماع إليك والعمل على تحسين التجربة التعليمية.
-      جميع المشاركات مجهولة الهوية.
+      عزيزي المتقدم، نهدف من خلال هذا الاستبيان إلى التعرف على مؤهلاتك وخبراتك.
+      يرجى تعبئة جميع الحقول المطلوبة بدقة، وسيتم التواصل معك في حال مطابقة شروطك.
     </div>
 
     <form id="surveyForm" novalidate>
 
-      <!-- المرحلة الدراسية -->
-      <div class="field" id="field-stage">
-        <label for="stage">
-          المرحلة الدراسية <span class="required">*</span>
-        </label>
-        <select id="stage" required>
-          <option value="">يرجى اختيار المرحلة</option>
-          <option value="المرحلة الثانية">المرحلة الثانية</option>
-          <option value="المرحلة الثالثة">المرحلة الثالثة</option>
-        </select>
-        <div class="error-text">يرجى اختيار المرحلة الدراسية.</div>
+      <!-- ============ 1. المعلومات الشخصية ============ -->
+      <div class="section-title">
+        <span class="num">1</span>
+        <span>المعلومات الشخصية</span>
       </div>
 
-      <!-- المادة الدراسية -->
-      <div class="field" id="field-subject">
-        <label for="subject">
-          المادة الدراسية <span class="required">*</span>
-        </label>
-        <select id="subject" required>
-          <option value="">يرجى اختيار المادة</option>
-          <option value="المخاطر الإشعاعية">المخاطر الإشعاعية</option>
-          <option value="أجهزة الأشعة">أجهزة الأشعة</option>
-          <option value="فيزياء الأشعة">فيزياء الأشعة</option>
-        </select>
-        <div class="error-text">يرجى اختيار المادة الدراسية.</div>
+      <div class="field" id="field-fullname">
+        <label for="fullname">الاسم الكامل <span class="required">*</span></label>
+        <input type="text" id="fullname" required placeholder="اكتب اسمك الثلاثي">
+        <div class="error-text">يرجى كتابة الاسم الكامل.</div>
       </div>
 
-      <!-- التقييم -->
-      <div class="field" id="field-rating">
-        <label>
-          كيف تقيّم الجانب العملي للمادة؟
-          <span class="required">*</span>
-        </label>
-        <div class="rating-box">
-          <div class="stars" id="stars" role="radiogroup" aria-label="تقييم الجانب العملي">
-            <button type="button" class="star" data-value="1" aria-label="نجمة 1">★</button>
-            <button type="button" class="star" data-value="2" aria-label="نجمة 2">★</button>
-            <button type="button" class="star" data-value="3" aria-label="نجمة 3">★</button>
-            <button type="button" class="star" data-value="4" aria-label="نجمة 4">★</button>
-            <button type="button" class="star" data-value="5" aria-label="نجمة 5">★</button>
-          </div>
-          <div class="rating-label" id="ratingLabel">اختر تقييماً من نجمة إلى خمس نجوم</div>
+      <div class="field" id="field-phone">
+        <label for="phone">رقم الهاتف (يجب أن يحتوي على واتساب) <span class="required">*</span></label>
+        <input type="tel" id="phone" required placeholder="مثال: 07701234567" dir="ltr" style="text-align:right;">
+        <div class="error-text">يرجى كتابة رقم هاتف صحيح (10 أرقام على الأقل).</div>
+      </div>
+
+      <div class="field" id="field-social">
+        <label for="social">رابط حسابك على مواقع التواصل الاجتماعي <span class="required">*</span></label>
+        <input type="url" id="social" required placeholder="https://facebook.com/username أو أي رابط آخر" dir="ltr" style="text-align:right;">
+        <div class="error-text">يرجى وضع رابط صحيح يبدأ بـ http أو https.</div>
+      </div>
+
+      <div class="field" id="field-city">
+        <label for="city">المدينة / مكان الإقامة الحالي <span class="required">*</span></label>
+        <input type="text" id="city" required placeholder="مثال: بغداد - الكرادة">
+        <div class="error-text">يرجى كتابة المدينة / مكان الإقامة.</div>
+      </div>
+
+      <!-- ============ 2. المؤهل التعليمي ============ -->
+      <div class="section-title">
+        <span class="num">2</span>
+        <span>المؤهل التعليمي</span>
+      </div>
+
+      <div class="field" id="field-education">
+        <label for="education">اسم المؤسسة التعليمية وسنة التخرج <span class="required">*</span></label>
+        <input type="text" id="education" required placeholder="مثال: جامعة بغداد - كلية التقنيات الصحية - 2020">
+        <div class="error-text">يرجى كتابة اسم المؤسسة وسنة التخرج.</div>
+      </div>
+
+      <!-- ============ 3. الشهادات المهنية ============ -->
+      <div class="section-title">
+        <span class="num">3</span>
+        <span>الشهادات المهنية</span>
+      </div>
+
+      <div class="field" id="field-certificate">
+        <label>رفع صورة شهادة <span class="required">*</span></label>
+        <div class="file-box" id="certBox">
+          <input type="file" id="certificate" accept="image/*">
+          <button type="button" class="remove-file" id="certRemove" title="إزالة">✕</button>
+          <div class="file-icon">📄</div>
+          <div class="file-text">اضغط لاختيار صورة الشهادة</div>
+          <div class="file-name" id="certName"></div>
         </div>
-        <div class="error-text">يرجى تقييم الجانب العملي.</div>
+        <div class="error-text">يرجى رفع صورة الشهادة.</div>
       </div>
 
-      <!-- المقترح -->
-      <div class="field" id="field-suggestion">
-        <label for="suggestion">
-          مقترحك لتطوير الجانب العملي
-          <span class="required">*</span>
-        </label>
-        <textarea
-          id="suggestion"
-          maxlength="2000"
-          required
-          placeholder="اكتب فكرتك أو مقترحك هنا...
+      <!-- ============ 4. الخبرة العملية ============ -->
+      <div class="section-title">
+        <span class="num">4</span>
+        <span>الخبرة العملية</span>
+      </div>
 
-مثلاً:
-- زيادة التجارب العملية.
-- توفير أجهزة وأدوات تعليمية.
-- تطوير أسلوب شرح التجارب.
-- إضافة تطبيقات عملية جديدة."
-        ></textarea>
-        <div class="counter" id="counter">
-          <span id="charCount">0</span> / 2000 حرف
+      <div class="field" id="field-experience">
+        <label for="experience">هل لديك خبرة في العمل بعيادات أشعة مسبقاً؟ <span class="required">*</span></label>
+        <select id="experience" required>
+          <option value="">يرجى الاختيار</option>
+          <option value="نعم، لدي خبرة سابقة">نعم، لدي خبرة سابقة</option>
+          <option value="لا، ليس لدي خبرة سابقة">لا، ليس لدي خبرة سابقة</option>
+        </select>
+        <div class="error-text">يرجى اختيار الإجابة.</div>
+      </div>
+
+      <!-- ============ 5. التوفر والظروف الشخصية ============ -->
+      <div class="section-title">
+        <span class="num">5</span>
+        <span>التوفر والظروف الشخصية</span>
+      </div>
+
+      <div class="field" id="field-obligations">
+        <label for="obligations">هل لديك أي التزامات أخرى؟ <span class="required">*</span></label>
+        <select id="obligations" required>
+          <option value="">يرجى الاختيار</option>
+          <option value="لا، ليس لدي أي التزامات">لا، ليس لدي أي التزامات</option>
+          <option value="نعم، لدي التزامات (دراسة / عمل آخر / عائلة)">نعم، لدي التزامات (دراسة / عمل آخر / عائلة)</option>
+        </select>
+        <div class="error-text">يرجى اختيار الإجابة.</div>
+      </div>
+
+      <div class="field" id="field-availability">
+        <label for="availability">هل أنت متفرغ للعمل بشكل كامل من الساعة 2 إلى الساعة 7 مساءً؟ <span class="required">*</span></label>
+        <select id="availability" required>
+          <option value="">يرجى الاختيار</option>
+          <option value="نعم، متفرغ تماماً">نعم، متفرغ تماماً</option>
+          <option value="لا، غير متفرغ في هذه الفترة">لا، غير متفرغ في هذه الفترة</option>
+        </select>
+        <div class="error-text">يرجى اختيار الإجابة.</div>
+      </div>
+
+      <!-- ============ 6. السيرة الذاتية (اختياري - صورة فقط) ============ -->
+      <div class="section-title">
+        <span class="num">6</span>
+        <span>السيرة الذاتية <span class="optional">(اختياري - صورة)</span></span>
+      </div>
+
+      <div class="field" id="field-cv">
+        <label for="cv">رفع صورة السيرة الذاتية <span class="optional">(إن وجدت)</span></label>
+        <div class="file-box" id="cvBox">
+          <input type="file" id="cv" accept="image/*">
+          <button type="button" class="remove-file" id="cvRemove" title="إزالة">✕</button>
+          <div class="file-icon">📎</div>
+          <div class="file-text">اضغط لاختيار صورة السيرة الذاتية</div>
+          <div class="file-name" id="cvName"></div>
         </div>
-        <div class="error-text">يرجى كتابة مقترح واضح (5 أحرف على الأقل).</div>
       </div>
 
       <button type="submit" class="submit-btn" id="submitBtn">
         <span class="spinner"></span>
-        <span id="submitText">إرسال المقترح ←</span>
+        <span id="submitText">إرسال الطلب ←</span>
       </button>
 
       <div id="message" class="message" role="status" aria-live="polite"></div>
@@ -530,9 +642,9 @@ textarea::placeholder { color: #94A3B8; font-weight: 400; }
   </main>
 
   <footer class="footer">
-    <strong>معاً نحو تعليم عملي أفضل</strong>
+    <strong>نتمنى لك التوفيق في التقديم</strong>
     <br>
-    جميع المشاركات مجهولة الهوية وتستخدم لأغراض التطوير.
+    سيتم التواصل معك في حال مطابقة الشروط المطلوبة.
   </footer>
 
 </div>
@@ -541,70 +653,148 @@ textarea::placeholder { color: #94A3B8; font-weight: 400; }
 // ==================================
 // رابط Google Apps Script
 // ==================================
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnMGhA-yyi3vSjanzYt3K-Pf-EQ7LKlDsflrnYeBWoR29DteyyqKA8ggXDlLPlfhiMAg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEtBOjfklkZgjf7kb8wikx66srXav44JBYhkQ855rQrOLsSfrGBqXemw0AmhZcqA66Hg/exec";
 
 // ==================================
 // عناصر الصفحة
 // ==================================
-const form        = document.getElementById("surveyForm");
-const stars       = document.querySelectorAll(".star");
-const ratingLabel = document.getElementById("ratingLabel");
-const suggestion  = document.getElementById("suggestion");
-const charCount   = document.getElementById("charCount");
-const counter     = document.getElementById("counter");
-const submitBtn   = document.getElementById("submitBtn");
-const submitText  = document.getElementById("submitText");
-const messageBox  = document.getElementById("message");
-const stageEl     = document.getElementById("stage");
-const subjectEl   = document.getElementById("subject");
+const form         = document.getElementById("surveyForm");
+const fullnameEl   = document.getElementById("fullname");
+const phoneEl      = document.getElementById("phone");
+const socialEl     = document.getElementById("social");
+const cityEl       = document.getElementById("city");
+const educationEl  = document.getElementById("education");
+const certEl       = document.getElementById("certificate");
+const certBox      = document.getElementById("certBox");
+const certNameEl   = document.getElementById("certName");
+const certRemove   = document.getElementById("certRemove");
+const experienceEl = document.getElementById("experience");
+const obligationsEl= document.getElementById("obligations");
+const availabilityEl = document.getElementById("availability");
+const cvEl         = document.getElementById("cv");
+const cvBox        = document.getElementById("cvBox");
+const cvNameEl     = document.getElementById("cvName");
+const cvRemove     = document.getElementById("cvRemove");
+const submitBtn    = document.getElementById("submitBtn");
+const submitText   = document.getElementById("submitText");
+const messageBox   = document.getElementById("message");
 
-let selectedRating = 0;
 let sending = false;
-
-const ratingNames = ["ضعيف جداً", "ضعيف", "متوسط", "جيد", "ممتاز"];
+let certBase64 = "";
+let certFileName = "";
+let cvBase64 = "";
+let cvFileName = "";
 
 // ==================================
-// التقييم بالنجوم
+// دالة مساعدة لتحويل ملف إلى Base64
 // ==================================
-stars.forEach(star => {
-  star.addEventListener("click", () => {
-    selectedRating = Number(star.dataset.value);
-    stars.forEach(item => {
-      const value = Number(item.dataset.value);
-      item.classList.toggle("active", value <= selectedRating);
-    });
-    ratingLabel.textContent = ratingNames[selectedRating - 1];
-    ratingLabel.classList.add("active");
-    document.getElementById("field-rating").classList.remove("invalid");
-  });
+function fileToBase64(file, callback) {
+  const reader = new FileReader();
+  reader.onload = (e) => callback(e.target.result);
+  reader.readAsDataURL(file);
+}
+
+// ==================================
+// التحقق من أن الملف صورة
+// ==================================
+function isImageFile(file) {
+  return file && file.type && file.type.startsWith("image/");
+}
+
+// ==================================
+// رفع الشهادة (إلزامي - صورة فقط)
+// ==================================
+certEl.addEventListener("change", () => {
+  const file = certEl.files[0];
+  if (!file) return;
+
+  if (!isImageFile(file)) {
+    alert("يرجى اختيار صورة فقط للشهادة (JPG / PNG / WEBP).");
+    certEl.value = "";
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("حجم صورة الشهادة كبير جداً. الحد الأقصى 2 ميجا.");
+    certEl.value = "";
+    return;
+  }
+
+  certFileName = file.name;
+  certNameEl.textContent = "✅ " + file.name;
+  certBox.classList.add("has-file");
+  document.getElementById("field-certificate").classList.remove("invalid");
+
+  fileToBase64(file, (b64) => { certBase64 = b64; });
+});
+
+certRemove.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  certEl.value = "";
+  certBase64 = "";
+  certFileName = "";
+  certNameEl.textContent = "";
+  certBox.classList.remove("has-file");
 });
 
 // ==================================
-// عداد الأحرف
+// رفع السيرة الذاتية (اختياري - صورة فقط)
 // ==================================
-suggestion.addEventListener("input", () => {
-  const len = suggestion.value.length;
-  charCount.textContent = len;
+cvEl.addEventListener("change", () => {
+  const file = cvEl.files[0];
+  if (!file) return;
 
-  counter.classList.remove("warn", "danger");
-  if (len > 1800) counter.classList.add("danger");
-  else if (len > 1500) counter.classList.add("warn");
-
-  if (suggestion.value.trim().length >= 5) {
-    document.getElementById("field-suggestion").classList.remove("invalid");
+  if (!isImageFile(file)) {
+    alert("يرجى اختيار صورة فقط للسيرة الذاتية (JPG / PNG / WEBP).");
+    cvEl.value = "";
+    return;
   }
+
+  if (file.size > 3 * 1024 * 1024) {
+    alert("حجم صورة السيرة الذاتية كبير جداً. الحد الأقصى 3 ميجا.");
+    cvEl.value = "";
+    return;
+  }
+
+  cvFileName = file.name;
+  cvNameEl.textContent = "✅ " + file.name;
+  cvBox.classList.add("has-file");
+
+  fileToBase64(file, (b64) => { cvBase64 = b64; });
+});
+
+cvRemove.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  cvEl.value = "";
+  cvBase64 = "";
+  cvFileName = "";
+  cvNameEl.textContent = "";
+  cvBox.classList.remove("has-file");
 });
 
 // ==================================
 // التحقق الفوري
 // ==================================
-stageEl.addEventListener("change", () => {
-  if (stageEl.value) document.getElementById("field-stage").classList.remove("invalid");
-});
+function bindValidation(el, fieldId, validator) {
+  const handler = () => {
+    if (validator(el.value.trim())) {
+      document.getElementById(fieldId).classList.remove("invalid");
+    }
+  };
+  el.addEventListener("input", handler);
+  el.addEventListener("change", handler);
+}
 
-subjectEl.addEventListener("change", () => {
-  if (subjectEl.value) document.getElementById("field-subject").classList.remove("invalid");
-});
+bindValidation(fullnameEl, "field-fullname", v => v.length >= 3);
+bindValidation(phoneEl, "field-phone", v => v.replace(/\D/g, "").length >= 10);
+bindValidation(socialEl, "field-social", v => /^https?:\/\/.+/i.test(v));
+bindValidation(cityEl, "field-city", v => v.length >= 2);
+bindValidation(educationEl, "field-education", v => v.length >= 3);
+bindValidation(experienceEl, "field-experience", v => v !== "");
+bindValidation(obligationsEl, "field-obligations", v => v !== "");
+bindValidation(availabilityEl, "field-availability", v => v !== "");
 
 // ==================================
 // عرض الرسائل
@@ -620,12 +810,14 @@ function showMessage(text, type) {
 // ==================================
 function resetSurvey() {
   form.reset();
-  selectedRating = 0;
-  stars.forEach(s => s.classList.remove("active"));
-  ratingLabel.textContent = "اختر تقييماً من نجمة إلى خمس نجوم";
-  ratingLabel.classList.remove("active");
-  charCount.textContent = "0";
-  counter.classList.remove("warn", "danger");
+  certBase64 = "";
+  certFileName = "";
+  certNameEl.textContent = "";
+  certBox.classList.remove("has-file");
+  cvBase64 = "";
+  cvFileName = "";
+  cvNameEl.textContent = "";
+  cvBox.classList.remove("has-file");
   document.querySelectorAll(".field").forEach(f => f.classList.remove("invalid"));
 }
 
@@ -653,7 +845,6 @@ function submitViaForm(data) {
   document.body.appendChild(hiddenForm);
   hiddenForm.submit();
 
-  // تنظيف بعد فترة
   setTimeout(() => {
     document.body.removeChild(hiddenForm);
     document.body.removeChild(iframe);
@@ -667,28 +858,53 @@ form.addEventListener("submit", function(e) {
   e.preventDefault();
   if (sending) return;
 
-  const stage          = stageEl.value;
-  const subject        = subjectEl.value;
-  const suggestionText = suggestion.value.trim();
+  const fullname     = fullnameEl.value.trim();
+  const phone        = phoneEl.value.trim();
+  const social       = socialEl.value.trim();
+  const city         = cityEl.value.trim();
+  const education    = educationEl.value.trim();
+  const experience   = experienceEl.value;
+  const obligations  = obligationsEl.value;
+  const availability = availabilityEl.value;
 
   document.querySelectorAll(".field").forEach(f => f.classList.remove("invalid"));
 
   let hasError = false;
 
-  if (!stage) {
-    document.getElementById("field-stage").classList.add("invalid");
+  if (fullname.length < 3) {
+    document.getElementById("field-fullname").classList.add("invalid");
     hasError = true;
   }
-  if (!subject) {
-    document.getElementById("field-subject").classList.add("invalid");
+  if (phone.replace(/\D/g, "").length < 10) {
+    document.getElementById("field-phone").classList.add("invalid");
     hasError = true;
   }
-  if (selectedRating < 1 || selectedRating > 5) {
-    document.getElementById("field-rating").classList.add("invalid");
+  if (!/^https?:\/\/.+/i.test(social)) {
+    document.getElementById("field-social").classList.add("invalid");
     hasError = true;
   }
-  if (suggestionText.length < 5) {
-    document.getElementById("field-suggestion").classList.add("invalid");
+  if (city.length < 2) {
+    document.getElementById("field-city").classList.add("invalid");
+    hasError = true;
+  }
+  if (education.length < 3) {
+    document.getElementById("field-education").classList.add("invalid");
+    hasError = true;
+  }
+  if (!certBase64) {
+    document.getElementById("field-certificate").classList.add("invalid");
+    hasError = true;
+  }
+  if (!experience) {
+    document.getElementById("field-experience").classList.add("invalid");
+    hasError = true;
+  }
+  if (!obligations) {
+    document.getElementById("field-obligations").classList.add("invalid");
+    hasError = true;
+  }
+  if (!availability) {
+    document.getElementById("field-availability").classList.add("invalid");
     hasError = true;
   }
 
@@ -698,31 +914,36 @@ form.addEventListener("submit", function(e) {
   }
 
   const data = {
-    stage: stage,
-    subject: subject,
-    rating: selectedRating,
-    suggestion: suggestionText
+    fullname: fullname,
+    phone: phone,
+    social: social,
+    city: city,
+    education: education,
+    certificateName: certFileName,
+    certificateBase64: certBase64,
+    experience: experience,
+    obligations: obligations,
+    availability: availability,
+    cvName: cvFileName,
+    cvBase64: cvBase64
   };
 
   sending = true;
   submitBtn.disabled = true;
   submitBtn.classList.add("loading");
-  submitText.textContent = "جارٍ إرسال المقترح...";
+  submitText.textContent = "جارٍ إرسال الطلب...";
   messageBox.className = "message";
 
-  // إرسال عبر النموذج
   submitViaForm(data);
 
-  // عرض رسالة نجاح بعد فترة قصيرة
   setTimeout(() => {
-    showMessage("✅ تم إرسال مقترحك بنجاح، شكراً لمساهمتك ❤️", "success");
+    showMessage("✅ تم إرسال طلبك بنجاح، سنتواصل معك قريباً. شكراً لك ❤️", "success");
     resetSurvey();
-
     sending = false;
     submitBtn.disabled = false;
     submitBtn.classList.remove("loading");
-    submitText.textContent = "إرسال المقترح ←";
-  }, 1200);
+    submitText.textContent = "إرسال الطلب ←";
+  }, 1500);
 });
 </script>
 
